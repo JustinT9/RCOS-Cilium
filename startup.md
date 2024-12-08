@@ -2,8 +2,8 @@
 *Powershell or any windows related distro is not recommended for onboarding*
 *Please read onboarding.md before using this document*  
 
-*When running the terraform commands adding the `-var-file="vars.tfvars"` flag  which consists of credentials needed to perform the terraform commands with the proper access*
 Follow general recommended steps (in this strict order) to properly install Cilium:
+#### INSTALLATION 
 1. [Install Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
     a. Make sure to be apart of the Cilium organization on https://app.terraform.io/app/organizations in order to have access to the subscription and its resources 
 2. [Install Docker](https://minikube.sigs.k8s.io/docs/drivers/docker/) (to run minikube to start up cluster) 
@@ -11,6 +11,10 @@ Follow general recommended steps (in this strict order) to properly install Cili
 4. [Install Kubectl](https://kubernetes.io/docs/tasks/tools/)
 5. [Install Cilium CLI](https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/#install-the-cilium-cli)  
 6. [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) 
+
+*REMINDER: When running the terraform commands adding the `-var-file="vars.tfvars"` flag  which consists of credentials needed to perform the terraform commands with the proper access*
+
+#### Starting Up Cilium Environment
 7. Running Terraform (recommended)
     a. Navigate to the azure-migration branch on the RCOS-Cilium repo and run `bash testing.sh cilium-base` which both performs terraform init, plan and apply  
 8. Running Terraform (old)
@@ -23,7 +27,9 @@ Follow general recommended steps (in this strict order) to properly install Cili
 12. Verify that you can connect to your Kubernetes cluster by running: `kubectl get nodes`  
 13. Additional Details about the cluster: `kubectl cluster-info`
 
-### IMPORTANT
+### IMPORTANT: Cleaning Up Resources
+*REMINDER: When running the terraform commands adding the `-var-file="vars.tfvars"` flag  which consists of credentials needed to perform the terraform commands with the proper access*
+
 Destroy Terraform: Run this when you are finished with the cluster to avoid errant costs 
 `terraform destroy` or 
 `terraform state list` to list the resources terraform created and applied 
